@@ -3,11 +3,12 @@
 memory_reset_peak_usage();
 $start_time = microtime(true);
 
-$raw = file_get_contents('./sample.txt');
+$raw = file_get_contents("./" . $inputFile);
 // $data = str_replace("\n\n"," ",$raw);
 $data = explode("\n", $raw);
 
 $result = "";
+display($data);
 
 //= Part One =========================================
 $arr = [];
@@ -24,39 +25,46 @@ foreach ($arr as $rowIndex => $row) {
     }
 }
 
-foreach ($positions["X"] as $coords) {
-    // print_r($coords);
-    $y = $coords["y"];
-    $x = $coords["x"];
+display($positions);
+
+$count = 0;
+
+foreach ($positions["X"] as $idxX => $coordsX) {
+    $yX = $coordsX["y"];
+    $xX = $coordsX["x"];
+    $way = "";
 
 
-$validPos = [
-    ["y" => $y - 1, "x" => $x],     // up
-    ["y" => $y + 1, "x" => $x],     // down
-    ["y" => $y, "x" => $x - 1],     // left
-    ["y" => $y, "x" => $x + 1],     // right
-    ["y" => $y - 1, "x" => $x - 1], // top-left
-    ["y" => $y - 1, "x" => $x + 1], // top-right
-    ["y" => $y + 1, "x" => $x - 1], // bottom-left
-    ["y" => $y - 1, "x" => $x + 1]  // bottom-right
-];
+    $validPos = [
+        "up"           => ["y" => $yX - 1, "x" => $xX],     // up
+        "down"         => ["y" => $yX + 1, "x" => $xX],     // down
+        "left"         => ["y" => $yX, "x" => $xX - 1], // left
+        "right"        => ["y" => $yX, "x" => $xX + 1], // right
+        "top-left"     => ["y" => $yX - 1, "x" => $xX - 1], // 
+        "top-right"    => ["y" => $yX - 1, "x" => $xX + 1], // top-right
+        "bottom-left"  => ["y" => $yX + 1, "x" => $xX - 1], // bottom-left
+        "bottom-right" => ["y" => $yX - 1, "x" => $xX + 1]  // bottom-right
+    ];
 
-foreach ($validPos as $pos) {
-    $posY = $pos["y"];
-    $posX = $pos["x"];
+    foreach ($validPos as $order => $pos) {
+        $posY = $pos["y"];
+        $posX = $pos["x"];
 
-    // Vérifier si les coordonnées adjacentes sont valides
-    if (isset($arr[$posY][$posX]) && $arr[$posY][$posX] === "M") {
-        echo "'X' en (" . $y . ", " . $x . ") et 'M' en (" . $posY . ", " . $posX . ") | \n";
+        if (isset($arr[$posY][$posX]) && $arr[$posY][$posX] === "M") {
+
+            echo "X index : $idxX, order :$order =>  'X' en (" . $yX . ", " . $xX . ") et 'M' en (" . $posY . ", " . $posX . ") | \n";
+            $way = $order;
+        }
+    }
+    foreach ($positions["M"] as $idxM => $coordsM) {
+        $yM = $coordsM["y"];
+        $xM = $coordsM["x"];
     }
 }
-}
 
 
 
-echo "<pre>";
-print_r($arr);
-echo "</pre>";
+// display($arr);
 
 echo "<pre>Execution time: ".round(microtime(true) - $start_time, 4)." seconds\n";
-echo "   Peak memory: ".round(memory_get_peak_usage()/pow(2, 20), 4), " MiB\n\n </pre>";
+echo "Peak memory: ".round(memory_get_peak_usage()/pow(2, 20), 4), " MiB\n\n </pre>";

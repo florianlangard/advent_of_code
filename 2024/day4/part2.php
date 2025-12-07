@@ -3,7 +3,7 @@
 memory_reset_peak_usage();
 $start_time = microtime(true);
 
-$raw = file_get_contents('./sample.txt');
+$raw = file_get_contents("./" . $inputFile);
 // $data = str_replace("\n\n"," ",$raw);
 $data = explode("\n", $raw);
 

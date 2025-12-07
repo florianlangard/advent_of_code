@@ -1,0 +1,135 @@
+body {
+    background-color: #0F0F23;
+    color:white;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 12px;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.title {
+    display: inline-block;
+    font-family: "doto", sans-serif;
+    font-weight: bold;
+}
+
+.subtitle {
+    display: inline-block;
+    font-family: "doto", sans-serif;
+    margin-left: 24px;
+}
+
+.title > a:hover {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+.sub-title-container {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toggle-source {
+    font-family: "doto", sans-serif;
+}
+
+form {
+    display: flex;
+    height: 35px;
+    align-items: center;
+}
+
+form > button {
+    margin-left: 12px;
+    font-size: 0.8em;
+    height: 35px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 2px dotted whitesmoke;
+    background-color: transparent;
+    color: whitesmoke;
+    cursor: pointer;
+    font-family: "doto", sans-serif;
+}
+
+form > button:hover {
+    border: 2px solid whitesmoke;
+}
+
+#add-year {
+    margin-top: 12px;
+    margin-bottom: 32px;
+}
+
+#add-year > button {
+    font-family: "doto", sans-serif;
+}
+
+.link-container {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    border-bottom: 2px dotted whitesmoke;
+    padding-bottom: 16px;
+}
+
+.link {
+    font-family: "doto", sans-serif;
+    border: 2px dotted whitesmoke;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 8px 8px;
+}
+
+.link > a {
+    width: calc(100% / 12);
+    margin-bottom: 12px;
+}
+
+.link:hover {
+    border: 2px solid whitesmoke;
+}
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+input {
+    all: unset;
+    box-sizing: border-box;
+    border: 2px dotted whitesmoke;
+    border-radius: 8px;
+    height: 35px;
+    padding: 4px 6px;
+    font-family: "doto", sans-serif;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+input:focus {
+    border: 2px solid whitesmoke;
+}
+
+#part1 {
+    padding-bottom: 32px;
+}
+
+#part1-text {
+    border-bottom: 1px dotted whitesmoke;
+}
