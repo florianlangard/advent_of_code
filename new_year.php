@@ -15,7 +15,7 @@ if ($year < 2000 || $year > 2100) {
 $target = "$basePath/$year";
 
 if (!is_dir($target)) {
-    mkdir($target, 0777, true);
+    mkdir($target, 0775, true);
 }
 
 header("Location: /advent_of_code/index.php");

@@ -19,12 +19,12 @@ $dayFolder = "day$day";
 $target = "$yearPath/$dayFolder";
 
 if (!is_dir($yearPath)) {
-    mkdir($yearPath, 0777, true);
+    mkdir($yearPath, 0775, true);
 }
 
 function copyRecursive($src, $dst) {
-    mkdir($dst, 0777, true);
-    chmod($dst, 0755);
+    mkdir($dst, 0775, true);
+    chmod($dst, 0775);
     $dir = opendir($src);
     while (($file = readdir($dir)) !== false) {
         if ($file === '.' || $file === '..') continue;
@@ -36,13 +36,13 @@ function copyRecursive($src, $dst) {
             copyRecursive($srcPath, $dstPath);
         } else {
             copy($srcPath, $dstPath);
-            chmod($dstPath, 0755);
+            chmod($dstPath, 0775);
         }
     }
     closedir($dir);
 }
 
-chmod($target, 0755);
+chmod($target, 0775);
 
 copyRecursive($templatePath, $target);
 
